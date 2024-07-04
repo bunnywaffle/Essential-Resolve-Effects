@@ -2,7 +2,7 @@
 
 Other Essential Pluging:
 
-MagicAnimate
-MagicZoom
-mCamRig
-mVertical
+1. MagicAnimate
+2. MagicZoom
+3. mCamRig
+4. mVertical
