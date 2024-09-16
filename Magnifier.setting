@@ -1,0 +1,222 @@
+{
+	Tools = ordered() {
+		Magnifier111 = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Type",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftRed",
+					Name = "Color",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftGreen",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftBlue",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftAlpha",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterRGBContrast",
+					Name = "Contrast",
+					Default = 1,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterRGBGain",
+					Name = "Gain",
+					Default = 1,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterRGBLift",
+					Name = "Lift",
+					Default = 0,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterRGBGamma",
+					Name = "Gamma",
+					Default = 1,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "ColorCorrector1",
+					Source = "MasterRGBBrightness",
+					Name = "Brightness",
+					Default = 0,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Input",
+				},
+				Input11 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Center",
+				},
+				Input12 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Size",
+					Name = "Magnification Size",
+					Default = 1.504,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "Ellipse1",
+					Source = "Center",
+				},
+				Input14 = InstanceInput {
+					SourceOp = "Ellipse1",
+					Source = "Height",
+					Name = "Size",
+					Default = 0.079,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "Instance_Ellipse1",
+					Source = "BorderWidth",
+					Default = 0.006,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Merge1 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "ColorCorrector1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 412.5 } },
+				},
+				Background1 = Background {
+					CtrlWShown = false,
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "Instance_Ellipse1",
+							Source = "Mask",
+						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 1, },
+						TopLeftGreen = Input { Value = 1, },
+						TopLeftBlue = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 346.5 } },
+				},
+				ColorCorrector1 = ColorCorrector {
+					CtrlWShown = false,
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "Ellipse1",
+							Source = "Mask",
+						},
+						ColorRanges = Input {
+							Value = ColorCurves {
+								Curves = {
+									{
+										Points = {
+											{ 0, 1 },
+											{ 0.4, 0.2 },
+											{ 0.6, 0 },
+											{ 1, 0 }
+										}
+									},
+									{
+										Points = {
+											{ 0, 0 },
+											{ 0.4, 0 },
+											{ 0.6, 0.2 },
+											{ 1, 1 }
+										}
+									}
+								}
+							},
+						},
+						HistogramIgnoreTransparent = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 313.5 } },
+				},
+				Transform1 = Transform {
+					CtrlWShown = false,
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "Ellipse1",
+							Source = "Mask",
+						},
+						Size = Input { Value = 1.504, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 165, 247.5 } },
+				},
+				Ellipse1 = EllipseMask {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						BorderWidth = Input { Value = 0.006, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Center = Input { Value = { 0.501783325902809, 0.526962727993656 }, },
+						Width = Input {
+							Value = 0.079,
+							Expression = "Height",
+						},
+						Height = Input { Value = 0.079, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 247.5 } },
+				},
+				Instance_Ellipse1 = EllipseMask {
+					CtrlWShown = false,
+					SourceOp = "Ellipse1",
+					Inputs = {
+						EffectMask = Input { },
+						SettingsNest = Input { },
+						Solid = Input { Value = 0, },
+						Width = Input { Expression = "Height" },
+						["ShapeRasterizer.Nest"] = Input { },
+						CommentsNest = Input { },
+						FrameRenderScriptNest = Input { },
+						StartRenderScripts = Input { },
+						EndRenderScripts = Input { },
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 346.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "Magnifier111"
+}

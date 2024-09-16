@@ -1,0 +1,293 @@
+{
+	Tools = ordered() {
+		NeonOutLine = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Filter",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Red",
+					Name = " ",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Green",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Blue",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Alpha",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Threshold",
+					Name = "Glow Threshold",
+					Default = 0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "Gain",
+					Name = "Glow Gain",
+					Default = 2,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "LockXY",
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "XGlowSize",
+					Default = 10,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "SoftGlow1",
+					Source = "YGlowSize",
+					Default = 10,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Center",
+					Name = "Noise Center",
+				},
+				Input12 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Detail",
+					Name = "Noise Detail",
+					Default = 10,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Contrast",
+					Name = "Noise Contrast",
+					Default = 5,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Brightness",
+					Name = "Noise Brightness",
+					Default = 0.14,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "LockXY",
+					Default = 1,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "XScale",
+					Default = 20,
+				},
+				Input17 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "YScale",
+					Default = 2,
+				},
+				Input18 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Angle",
+					Name = "Noise Angle",
+					Default = 93.9,
+				},
+				Input19 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Seethe",
+					Name = "Noise Seethe",
+					Default = 0.486,
+				},
+				Input20 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "SeetheRate",
+					Default = 0.417,
+				},
+				Input21 = InstanceInput {
+					SourceOp = "FastNoise1",
+					Source = "Inverted",
+					Name = "Noise Inverted",
+					Default = 0,
+				},
+				Input22 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Type",
+				},
+				Input23 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftRed",
+					Name = "Color",
+					ControlGroup = 20,
+					Default = 0,
+				},
+				Input24 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftGreen",
+					ControlGroup = 20,
+					Default = 1,
+				},
+				Input25 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftBlue",
+					ControlGroup = 20,
+					Default = 0.0823529411765,
+				},
+				Input26 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftAlpha",
+					ControlGroup = 20,
+					Default = 1,
+				},
+				Input27 = InstanceInput {
+					SourceOp = "ErodeDilate1",
+					Source = "Filter",
+					Default = 3,
+				},
+				Input28 = InstanceInput {
+					SourceOp = "ErodeDilate1",
+					Source = "LockXY",
+					Default = 1,
+				},
+				Input29 = InstanceInput {
+					SourceOp = "ErodeDilate1",
+					Source = "XAmount",
+					Name = "Outline Size",
+					MinScale = 0,
+					MaxScale = 0.5,
+					Default = 0.0059,
+				},
+				Input30 = InstanceInput {
+					SourceOp = "ErodeDilate1",
+					Source = "YAmount",
+					Default = 0,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "Transform1",
+					Source = "Input",
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "SoftGlow1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 440, 313.5 } },
+				},
+				SoftGlow1 = SoftGlow {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "FastNoise1",
+							Source = "Output",
+						},
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						Input = Input {
+							SourceOp = "ChannelBooleans1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 385, 247.5 } },
+				},
+				ChannelBooleans1 = ChannelBoolean {
+					Inputs = {
+						Operation = Input { Value = 2, },
+						Background = Input {
+							SourceOp = "MatteControl1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 385, 181.5 } },
+				},
+				MatteControl1 = MatteControl {
+					CtrlWZoom = false,
+					Inputs = {
+						Matte = Input { Value = 0, },
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						["Solid.MaskNest"] = Input { Value = 1, },
+						["Garbage.Matte"] = Input {
+							SourceOp = "ErodeDilate1",
+							Source = "Output",
+						},
+						["Garbage.MaskInverted"] = Input { Value = 1, },
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 385, 115.5 } },
+				},
+				FastNoise1 = FastNoise {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						Center = Input { Value = { 0.6, 0.5 }, },
+						Detail = Input { Value = 10, },
+						Contrast = Input { Value = 5, },
+						Brightness = Input { Value = 0.14, },
+						XScale = Input { Value = 20, },
+						Angle = Input { Value = 93.9, },
+						Seethe = Input { Value = 0.486, },
+						SeetheRate = Input { Value = 0.417, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 220, 247.5 } },
+				},
+				Background1 = Background {
+					Inputs = {
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftGreen = Input { Value = 1, },
+						TopLeftBlue = Input { Value = 0.0823529411765, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 220, 115.5 } },
+				},
+				ErodeDilate1 = ErodeDilate {
+					Inputs = {
+						Filter = Input { Value = 3, },
+						XAmount = Input { Value = 0.0059, },
+						Input = Input {
+							SourceOp = "Transform1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 330, 16.5 } },
+				},
+				Transform1 = Transform {
+					ViewInfo = OperatorInfo { Pos = { 440, -49.5 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "NeonOutLine"
+}
