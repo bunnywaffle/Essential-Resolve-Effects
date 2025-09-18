@@ -1,0 +1,201 @@
+{
+	Tools = ordered() {
+		InnerShadow1 = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowStrength",
+					Default = 1,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowAngle",
+					Default = 46,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "ShadowDistance",
+					MaxScale = 0.2000000029802,
+					Default = 0.0063,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowBlur",
+					Default = 0.071,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowColorRed",
+					Name = "Color",
+					ControlGroup = 5,
+					Default = 0,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowColorGreen",
+					Name = "Color",
+					ControlGroup = 5,
+					Default = 0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowColorBlue",
+					Name = "Color",
+					ControlGroup = 5,
+					Default = 0,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "Bitmap1",
+					Source = "Channel",
+				},
+				Input9 = InstanceInput {
+					SourceOp = "Bitmap1",
+					Source = "Low",
+					ControlGroup = 7,
+					Default = 0,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "Bitmap1",
+					Source = "High",
+					ControlGroup = 7,
+					Default = 1,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "Bitmap1",
+					Source = "ClipBlack",
+					Name = "Black",
+					Width = 0.5,
+					Default = 1,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "Bitmap1",
+					Source = "ClipWhite",
+					Name = "White",
+					Width = 0.5,
+					Default = 1,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "PipeRouter1",
+					Source = "Input",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge2",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Merge2 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "PipeRouter2",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Merge1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 1070.63, 198.591 } },
+				},
+				Merge1 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "DropShadow1",
+							Source = "Output",
+						},
+						Operator = Input { Value = FuID { "In" }, },
+						PerformDepthMerge = Input { Value = 0, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 1070.63, 144.692 } },
+				},
+				DropShadow1 = ofx.com.blackmagicdesign.resolvefx.DropShadow {
+					CtrlWShown = false,
+					Inputs = {
+						Source = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						shadowStrength = Input { Value = 1, },
+						shadowAngle = Input { Value = 46, },
+						ShadowDistance = Input { Value = 0.0063, },
+						shadowBlur = Input { Value = 0.071, },
+						shadowColorRed = Input { Value = 0, },
+						shadowColorGreen = Input { Value = 0, },
+						shadowColorBlue = Input { Value = 0, },
+						isLegacyComp = Input { Value = 0, },
+						blendGroup = Input { Value = 0, },
+						blendIn = Input { Value = 1, },
+						blend = Input { Value = 0, },
+						ignoreContentShape = Input { Value = 0, },
+						legacyIsProcessRGBOnly = Input { Value = 0, },
+						IsNoTemporalFramesReqd = Input { Value = 0, },
+						refreshTrigger = Input { Value = 1, },
+						srcProcessingAlphaMode = Input { Value = 2, },
+						dstProcessingAlphaMode = Input { Value = 2, },
+						resolvefxVersion = Input { Value = "2.0", }
+					},
+					ViewInfo = OperatorInfo { Pos = { 1070.63, 79.571 } },
+				},
+				Background1 = Background {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "Bitmap1",
+							Source = "Mask",
+						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 0.3176470588235, },
+						TopLeftBlue = Input { Value = 1, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 933.3, 79.571 } },
+				},
+				Bitmap1 = BitmapMask {
+					CtrlWShown = false,
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						Invert = Input { Value = 1, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Image = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 715.967, 79.571 } },
+				},
+				PipeRouter2 = PipeRouter {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 713.967, 198.591 } },
+				},
+				PipeRouter1 = PipeRouter {
+					CtrlWShown = false,
+					ViewInfo = PipeRouterInfo { Pos = { 705.3, 138.591 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "InnerShadow1"
+}
