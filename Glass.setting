@@ -1,0 +1,512 @@
+{
+	Tools = ordered() {
+		Glass = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowStrength",
+					Default = 0.197,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowAngle",
+					Default = 37.5,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "ShadowDistance",
+					MaxScale = 0.2000000029802,
+					Default = 0.0079,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowBlur",
+					Default = 0.315,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowColorRed",
+					Name = "Color",
+					ControlGroup = 5,
+					Default = 0,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowColorGreen",
+					Name = "Color",
+					ControlGroup = 5,
+					Default = 0,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "DropShadow1",
+					Source = "shadowColorBlue",
+					Name = "Color",
+					ControlGroup = 5,
+					Default = 0,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Red",
+					Name = " ",
+					ControlGroup = 6,
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Green",
+					ControlGroup = 6,
+					Default = 1,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Blue",
+					ControlGroup = 6,
+					Default = 1,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Alpha",
+					ControlGroup = 6,
+					Default = 0,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Gain",
+					Default = 1,
+				},
+				Input13 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Lift",
+					Default = 0,
+				},
+				Input14 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Gamma",
+					Default = 1,
+				},
+				Input15 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Contrast",
+					Default = 0,
+				},
+				Input16 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Brightness",
+					Default = 0,
+				},
+				Input17 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Saturation",
+					Default = 1,
+				},
+				Input18 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Low",
+					ControlGroup = 13,
+					Default = 0,
+				},
+				Input19 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "High",
+					ControlGroup = 13,
+					Default = 1,
+				},
+				Input20 = InstanceInput {
+					SourceOp = "Displace1",
+					Source = "XRefraction",
+					Name = "Glass X Refraction",
+					Default = 0.2,
+				},
+				Input21 = InstanceInput {
+					SourceOp = "Displace1",
+					Source = "YRefraction",
+					Name = "Glass Y Refraction",
+					Default = 0.1,
+				},
+				Input22 = InstanceInput {
+					SourceOp = "Displace1",
+					Source = "LightPower",
+					Name = "Glass Light Power",
+					Default = 0,
+				},
+				Input23 = InstanceInput {
+					SourceOp = "Displace1",
+					Source = "LightAngle",
+					Name = "Glass Light Angle",
+					Default = 179.3,
+				},
+				Input24 = InstanceInput {
+					SourceOp = "DropShadow2",
+					Source = "shadowStrength",
+					Name = "Inner Glow Strength",
+					Default = 1,
+				},
+				Input25 = InstanceInput {
+					SourceOp = "DropShadow2",
+					Source = "shadowAngle",
+					Name = "Inner Glow Drop Angle",
+					Default = 37.5,
+				},
+				Input26 = InstanceInput {
+					SourceOp = "DropShadow2",
+					Source = "ShadowDistance",
+					Name = "Inner Glow Drop Distance",
+					MaxScale = 0.2000000029802,
+					Default = 0,
+				},
+				Input27 = InstanceInput {
+					SourceOp = "DropShadow2",
+					Source = "shadowBlur",
+					Name = "Inner Glow Blur",
+					Default = 0.291,
+				},
+				Input28 = InstanceInput {
+					SourceOp = "DropShadow2",
+					Source = "shadowColorRed",
+					Name = "Inner Glow Color",
+					ControlGroup = 22,
+					Default = 0,
+				},
+				Input29 = InstanceInput {
+					SourceOp = "DropShadow2",
+					Source = "shadowColorGreen",
+					Name = "Inner Glow Color",
+					ControlGroup = 22,
+					Default = 0,
+				},
+				Input30 = InstanceInput {
+					SourceOp = "DropShadow2",
+					Source = "shadowColorBlue",
+					Name = "Inner Glow Color",
+					ControlGroup = 22,
+					Default = 0,
+				},
+				Input31 = InstanceInput {
+					SourceOp = "Blur1",
+					Source = "Filter",
+				},
+				Input32 = InstanceInput {
+					SourceOp = "Blur1",
+					Source = "Red",
+					Name = " ",
+					ControlGroup = 24,
+					Default = 1,
+				},
+				Input33 = InstanceInput {
+					SourceOp = "Blur1",
+					Source = "Green",
+					ControlGroup = 24,
+					Default = 1,
+				},
+				Input34 = InstanceInput {
+					SourceOp = "Blur1",
+					Source = "Blue",
+					ControlGroup = 24,
+					Default = 1,
+				},
+				Input35 = InstanceInput {
+					SourceOp = "Blur1",
+					Source = "Alpha",
+					ControlGroup = 24,
+					Default = 1,
+				},
+				Input36 = InstanceInput {
+					SourceOp = "Blur1",
+					Source = "LockXY",
+					Default = 1,
+				},
+				Input37 = InstanceInput {
+					SourceOp = "Blur1",
+					Source = "XBlurSize",
+					Name = "Glass Blur Size",
+					Default = 7.1,
+				},
+				Input38 = InstanceInput {
+					SourceOp = "Blur1",
+					Source = "YBlurSize",
+					Default = 1,
+				},
+				Input39 = InstanceInput {
+					SourceOp = "Bitmap1",
+					Source = "SoftEdge",
+					Default = 0.0016,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "PipeRouter7",
+					Source = "Input",
+					Name = "Mask",
+				},
+				MainInput2 = InstanceInput {
+					SourceOp = "PipeRouter2",
+					Source = "Input",
+					Name = "Media Input",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				PipeRouter5 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "PipeRouter3",
+							Source = "Output",
+						}
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 1226.94, 169.182 } },
+				},
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "PipeRouter5",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Merge2",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 1226.94, 116.121 } },
+				},
+				Merge2 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "DropShadow1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Bitmap2",
+							Source = "Mask",
+						},
+						ApplyMode = Input { Value = FuID { "Screen" }, },
+						PerformDepthMerge = Input { Value = 0, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 1075.94, 116.121 } },
+				},
+				DropShadow1 = ofx.com.blackmagicdesign.resolvefx.DropShadow {
+					Inputs = {
+						Source = Input {
+							SourceOp = "BrightnessContrast1",
+							Source = "Output",
+						},
+						shadowStrength = Input { Value = 0.197, },
+						shadowAngle = Input { Value = 37.5, },
+						ShadowDistance = Input { Value = 0.0079, },
+						shadowBlur = Input { Value = 0.315, },
+						shadowColorRed = Input { Value = 0, },
+						shadowColorGreen = Input { Value = 0, },
+						shadowColorBlue = Input { Value = 0, },
+						isLegacyComp = Input { Value = 0, },
+						blendGroup = Input { Value = 0, },
+						blendIn = Input { Value = 1, },
+						blend = Input { Value = 0, },
+						ignoreContentShape = Input { Value = 0, },
+						legacyIsProcessRGBOnly = Input { Value = 0, },
+						IsNoTemporalFramesReqd = Input { Value = 0, },
+						refreshTrigger = Input { Value = 1, },
+						srcProcessingAlphaMode = Input { Value = 2, },
+						dstProcessingAlphaMode = Input { Value = 2, },
+						resolvefxVersion = Input { Value = "2.0", }
+					},
+					ViewInfo = OperatorInfo { Pos = { 851.803, 116.121 } },
+				},
+				BrightnessContrast1 = BrightnessContrast {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Displace1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 735.473, 116.121 } },
+				},
+				ChannelBooleans2 = ChannelBoolean {
+					Inputs = {
+						Operation = Input { Value = 3, },
+						Background = Input {
+							SourceOp = "PipeRouter8",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "DropShadow2",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 981.653, 9.14399 } },
+				},
+				Bitmap2 = BitmapMask {
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Image = Input {
+							SourceOp = "ChannelBooleans2",
+							Source = "Output",
+						},
+						Low = Input { Value = 0.2, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 1075.94, 9.14399 } },
+				},
+				CreateBumpMap1 = CreateBumpMap {
+					CtrlWZoom = false,
+					Inputs = {
+						FilterSize = Input { Value = FuID { "5" }, },
+						Input = Input {
+							SourceOp = "Bitmap1",
+							Source = "Mask",
+						},
+						HeightScale = Input { Value = 18.9, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 630, 12.8182 } },
+				},
+				Displace1 = Displace {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "PipeRouter4",
+							Source = "Output",
+						},
+						MultiplyByMask = Input { Value = 1, },
+						Type = Input { Value = 1, },
+						XOffset = Input { Value = -0.5, },
+						XRefraction = Input { Value = 0.2, },
+						YOffset = Input { Value = -0.5, },
+						YRefraction = Input { Value = 0.1, },
+						LightAngle = Input { Value = 179.3, },
+						Input = Input {
+							SourceOp = "Blur1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "CreateBumpMap1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 609.057, 116.121 } },
+				},
+				PipeRouter4 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 588.095, 47.9697 } },
+				},
+				PipeRouter8 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "PipeRouter7",
+							Source = "Output",
+						}
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 803.22, -27.6074 } },
+				},
+				DropShadow2 = ofx.com.blackmagicdesign.resolvefx.DropShadow {
+					Inputs = {
+						UseMaterial = Input { Value = 1, },
+						Source = Input {
+							SourceOp = "ChannelBooleans1",
+							Source = "Output",
+						},
+						shadowStrength = Input { Value = 1, },
+						shadowAngle = Input { Value = 37.5, },
+						ShadowDistance = Input { Value = 0, },
+						shadowBlur = Input { Value = 0.291, },
+						shadowColorRed = Input { Value = 0, },
+						shadowColorGreen = Input { Value = 0, },
+						shadowColorBlue = Input { Value = 0, },
+						isLegacyComp = Input { Value = 0, },
+						blendGroup = Input { Value = 0, },
+						blendIn = Input { Value = 1, },
+						blend = Input { Value = 0, },
+						ignoreContentShape = Input { Value = 0, },
+						legacyIsProcessRGBOnly = Input { Value = 0, },
+						IsNoTemporalFramesReqd = Input { Value = 0, },
+						refreshTrigger = Input { Value = 1, },
+						srcProcessingAlphaMode = Input { Value = 2, },
+						dstProcessingAlphaMode = Input { Value = 2, },
+						resolvefxVersion = Input { Value = "2.0", }
+					},
+					ViewInfo = OperatorInfo { Pos = { 981.653, -31.4242 } },
+				},
+				Blur1 = Blur {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						XBlurSize = Input { Value = 7.1, },
+						Input = Input {
+							SourceOp = "PipeRouter2",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 422.667, 116.121 } },
+				},
+				ChannelBooleans1 = ChannelBoolean {
+					Inputs = {
+						Operation = Input { Value = 10, },
+						ToRed = Input { Value = 5, },
+						ToGreen = Input { Value = 6, },
+						ToBlue = Input { Value = 7, },
+						ToAlpha = Input { Value = 8, },
+						Background = Input {
+							SourceOp = "PipeRouter8",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 981.653, -68.8195 } },
+				},
+				PipeRouter1 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "Bitmap1",
+							Source = "Mask",
+						}
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 413.333, 47.9697 } },
+				},
+				Bitmap1 = BitmapMask {
+					Inputs = {
+						Filter = Input { Value = FuID { "Fast Gaussian" }, },
+						SoftEdge = Input { Value = 0.0016, },
+						MaskWidth = Input { Value = 1920, },
+						MaskHeight = Input { Value = 1080, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Image = Input {
+							SourceOp = "PipeRouter7",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 360.619, 12.8182 } },
+				},
+				PipeRouter7 = PipeRouter {
+					ViewInfo = PipeRouterInfo { Pos = { 352.895, -27.6074 } },
+				},
+				PipeRouter3 = PipeRouter {
+					Inputs = {
+						Input = Input {
+							SourceOp = "PipeRouter2",
+							Source = "Output",
+						}
+					},
+					ViewInfo = PipeRouterInfo { Pos = { 346, 169.182 } },
+				},
+				PipeRouter2 = PipeRouter {
+					ViewInfo = PipeRouterInfo { Pos = { 336.667, 116.121 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "Glass"
+}
