@@ -1,0 +1,120 @@
+{
+	Tools = ordered() {
+		LongShadow = MacroOperator {
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "Type",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftRed",
+					Name = "Color",
+					ControlGroup = 2,
+					Default = 0.8078431372549,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftGreen",
+					ControlGroup = 2,
+					Default = 0.4862745098039,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftBlue",
+					ControlGroup = 2,
+					Default = 0.0313725490196,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "Background1",
+					Source = "TopLeftAlpha",
+					ControlGroup = 2,
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "DirectionalBlur3",
+					Source = "Length",
+					MaxScale = 0.3,
+					Default = 0.146,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "DirectionalBlur3",
+					Source = "Angle",
+					Default = -284.4,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "PipeRouter1",
+					Source = "Input",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Merge1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Merge1 = Merge {
+					Inputs = {
+						Background = Input {
+							SourceOp = "Background1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						PerformDepthMerge = Input { Value = 0, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 584, 64.6515 } },
+				},
+				Background1 = Background {
+					Inputs = {
+						EffectMask = Input {
+							SourceOp = "BrightnessContrast1",
+							Source = "Output",
+						},
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftRed = Input { Value = 0.8078431372549, },
+						TopLeftGreen = Input { Value = 0.4862745098039, },
+						TopLeftBlue = Input { Value = 0.0313725490196, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 584, 11 } },
+				},
+				BrightnessContrast1 = BrightnessContrast {
+					Inputs = {
+						Alpha = Input { Value = 1, },
+						High = Input { Value = 0.001, },
+						ClipBlack = Input { Value = 1, },
+						ClipWhite = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "DirectionalBlur3",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 420.667, 11 } },
+				},
+				DirectionalBlur3 = DirectionalBlur {
+					CtrlWZoom = false,
+					Inputs = {
+						Length = Input { Value = 0.146, },
+						Angle = Input { Value = -284.4, },
+						Input = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { 316, 11 } },
+				},
+				PipeRouter1 = PipeRouter {
+					ViewInfo = PipeRouterInfo { Pos = { 303.333, 64.6515 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "LongShadow"
+}
