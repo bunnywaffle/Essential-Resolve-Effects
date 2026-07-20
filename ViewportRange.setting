@@ -1,0 +1,105 @@
+{
+	Tools = ordered() {
+		ViewportRange = MacroOperator {
+			CtrlWZoom = false,
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "Dissolve1_2",
+					Source = "Foreground",
+					Page = "Controls",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Dissolve1_2",
+					Source = "MinFrame",
+					Page = "Controls",
+					Default = 10,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Dissolve1_2",
+					Source = "MaxFrame",
+					Page = "Controls",
+					Default = 80,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Dissolve1_2",
+					Source = "Invert",
+					Page = "Controls",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Dissolve1_2",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 717.415, 38.6075 } },
+			Tools = ordered() {
+				Dissolve1_2 = Dissolve {
+					Transitions = {
+						[0] = "DFTDissolve"
+					},
+					CtrlWShown = false,
+					Inputs = {
+						Mix = Input { Expression = "iif(Invert == 1,\n    iif(comp.CurrentTime >= MinFrame and comp.CurrentTime <= MaxFrame, 0, 1),\n    iif(comp.CurrentTime >= MinFrame and comp.CurrentTime <= MaxFrame, 1, 0)\n)", },
+						Background = Input {
+							SourceOp = "Background1_2",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Text1",
+							Source = "Output",
+						},
+						Invert = Input { Value = 1, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 8.27253 } },
+					UserControls = ordered() {
+						MinFrame = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "SliderControl",
+							INP_MaxScale = 100,
+							INP_Default = 10,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "Min Frame"
+						},
+						MaxFrame = {
+							INP_MaxAllowed = 1000000,
+							INP_Integer = false,
+							INPID_InputControl = "SliderControl",
+							INP_MaxScale = 100,
+							INP_Default = 80,
+							INP_MinScale = 0,
+							INP_MinAllowed = -1000000,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							LINKS_Name = "Max Frame"
+						},
+						Invert = {
+							CBC_TriState = false,
+							INP_Integer = false,
+							LINKID_DataType = "Number",
+							ICS_ControlPage = "Controls",
+							INPID_InputControl = "CheckboxControl",
+							LINKS_Name = "Invert",
+						}
+					}
+				},
+				Background1_2 = Background {
+					CtrlWShown = false,
+					Inputs = {
+						GlobalOut = Input { Value = 119, },
+						Width = Input { Value = 1920, },
+						Height = Input { Value = 1080, },
+						UseFrameFormatSettings = Input { Value = 1, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftAlpha = Input { Value = 0, }
+					},
+					ViewInfo = OperatorInfo { Pos = { 0, 105.243 } },
+				}
+			},
+		}
+	}
+}
